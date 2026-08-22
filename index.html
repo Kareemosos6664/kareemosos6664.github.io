@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kareem Osama Abozaid — AI & Data Science</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="loader">
+  <div class="loader-inner">
+    <div class="loader-log" id="loaderLog"></div>
+    <div class="loader-bar"><i id="loaderFill"></i></div>
+  </div>
+</div>
+
+<div class="cursor-glow" id="cursorGlow"></div>
+<canvas id="net"></canvas>
+
+<header id="siteHeader">
+  <div class="logo"><b>KAREEM</b>·ABOZAID</div>
+  <nav>
+    <ul id="navList">
+      <li><a href="#about" class="nav-link" data-target="about">About</a></li>
+      <li><a href="#focus" class="nav-link" data-target="focus">Focus</a></li>
+      <li><a href="#tools" class="nav-link" data-target="tools">Tools</a></li>
+      <li><a href="#projects" class="nav-link" data-target="projects">Projects</a></li>
+      <li><a href="#resume" class="nav-link" data-target="resume">Résumé</a></li>
+      <li><a href="#contact" class="nav-link" data-target="contact">Contact</a></li>
+    </ul>
+  </nav>
+  <button id="menuBtn" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+</header>
+
+<!-- ============ HERO — NAME REVEAL ============ -->
+<section class="hero">
+  <div class="hero-inner reveal">
+    <div class="eyebrow"><span class="dot"></span> Computer Science & AI · Machine Intelligence</div>
+    <h1 class="name-reveal">KAREEM OSAMA<span class="last">ABOZAID</span></h1>
+    <p class="typewriter-line"><span id="typewriter"></span><span class="caret">|</span></p>
+  </div>
+  <div class="scroll-cue"><span></span>scroll</div>
+</section>
+
+<!-- ============ MARQUEE STRIP ============ -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>PYTHON</span><span>·</span><span>MACHINE LEARNING</span><span>·</span><span>DATA SCIENCE</span><span>·</span>
+    <span>GENERATIVE AI</span><span>·</span><span>SQL</span><span>·</span><span>POWER BI</span><span>·</span>
+    <span>DEEP LEARNING</span><span>·</span><span>NLP</span><span>·</span>
+    <span>PYTHON</span><span>·</span><span>MACHINE LEARNING</span><span>·</span><span>DATA SCIENCE</span><span>·</span>
+    <span>GENERATIVE AI</span><span>·</span><span>SQL</span><span>·</span><span>POWER BI</span><span>·</span>
+    <span>DEEP LEARNING</span><span>·</span><span>NLP</span><span>·</span>
+  </div>
+</div>
+
+<!-- ============ SIGNAL — WIREFRAME ILLUSTRATION ============ -->
+<section class="signal">
+  <span class="signal-tag reveal">PORTFOLIO / 2026</span>
+  <div class="signal-figure reveal">
+    <svg viewBox="0 0 400 460" class="wireframe">
+      <g class="wf-line">
+        <!-- head -->
+        <circle cx="200" cy="90" r="46"/>
+        <!-- neck to torso -->
+        <line x1="200" y1="136" x2="200" y2="180"/>
+        <path d="M140 180 Q200 155 260 180 L275 330 Q200 360 125 330 Z"/>
+        <!-- arms -->
+        <line x1="140" y1="190" x2="70" y2="270"/>
+        <line x1="70" y1="270" x2="55" y2="360"/>
+        <line x1="260" y1="190" x2="330" y2="270"/>
+        <line x1="330" y1="270" x2="345" y2="360"/>
+        <!-- legs -->
+        <line x1="165" y1="345" x2="150" y2="440"/>
+        <line x1="235" y1="345" x2="250" y2="440"/>
+        <!-- internal circuitry -->
+        <line x1="200" y1="200" x2="200" y2="320"/>
+        <line x1="160" y1="230" x2="240" y2="230"/>
+        <line x1="150" y1="270" x2="250" y2="270"/>
+        <circle cx="200" cy="90" r="6" class="wf-node core"/>
+        <circle cx="200" cy="230" r="5" class="wf-node"/>
+        <circle cx="160" cy="230" r="4" class="wf-node"/>
+        <circle cx="240" cy="230" r="4" class="wf-node"/>
+        <circle cx="200" cy="270" r="4" class="wf-node"/>
+        <circle cx="70" cy="270" r="4" class="wf-node"/>
+        <circle cx="330" cy="270" r="4" class="wf-node"/>
+      </g>
+      <g class="wf-scan">
+        <line x1="60" y1="150" x2="340" y2="150" stroke-dasharray="4 8"/>
+      </g>
+    </svg>
+    <div class="signal-caption">
+      <span>SYSTEM ONLINE</span>
+      <span>MODEL: kareem-v4 · STATUS: LEARNING</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MANIFESTO + NUMBERS ============ -->
+<section class="manifesto">
+  <div class="wrap-narrow reveal">
+    <p class="manifesto-text">
+      Where <em>data</em> stops being noise and starts being a decision — that's the only title I'm chasing.
+      Give me a messy dataset and I'll stay with it until the pattern shows the way it should. Everything I claim here is
+      <em>honest</em>, and everything I learn I try to <em>teach</em>.
+    </p>
+  </div>
+  <div class="manifesto-numbers reveal">
+    <div class="mnum"><span class="mnum-val" data-count="92">0</span><span class="mnum-label">% best model accuracy</span></div>
+    <div class="mnum"><span class="mnum-val" data-count="15">0</span><span class="mnum-label">courses completed</span></div>
+    <div class="mnum"><span class="mnum-val" data-count="6">0</span><span class="mnum-label">projects shipped</span></div>
+    <div class="mnum"><span class="mnum-val" data-count="4">0</span><span class="mnum-label">year, CS & AI</span></div>
+  </div>
+</section>
+
+<!-- ============ ABOUT — PORTRAIT + QUOTE + BIO ============ -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="portrait reveal" data-tilt>
+      <img src="assets/kareem.jpg" alt="Kareem Osama Abozaid">
+      <span class="portrait-tag">KAREEM.OSAMA · 4TH YEAR</span>
+    </div>
+    <div class="about-copy reveal">
+      <p class="quote">"I like the point where a dataset stops being a spreadsheet and starts telling a story."</p>
+      <p class="bio">
+        <strong>Kareem Osama Mohamed Abozaid — Computer Science & AI, Machine Intelligence track.</strong>
+        4th-year student and data/ML practitioner working across data science, machine learning and
+        generative AI. I build the full pipeline: pulling and cleaning data, training models that
+        generalize, and packaging results into dashboards and tools people actually use — in
+        <strong>Python</strong> and <strong>SQL</strong>, mostly.
+      </p>
+      <div class="about-tags">
+        <span class="tag">Data Science</span>
+        <span class="tag">Machine Learning</span>
+        <span class="tag">Generative AI</span>
+        <span class="tag">Time Series</span>
+        <span class="tag">NLP</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LIVE TERMINAL DEMO ============ -->
+<section id="terminal-section" class="terminal-section">
+  <div class="wrap-narrow">
+    <div class="eyebrow reveal" style="justify-content:center;"><span class="dot"></span> Live from my machine</div>
+    <div class="terminal reveal">
+      <div class="terminal-bar">
+        <span class="tdot r"></span><span class="tdot y"></span><span class="tdot g"></span>
+        <span class="terminal-title">kareem@ml-pipeline: ~/projects/churn-model</span>
+      </div>
+      <div class="terminal-body">
+        <pre id="terminalCode"></pre>
+        <div class="terminal-output" id="terminalOutput">
+          <div class="chart-row"><span class="chart-label">Resume Screening</span><div class="chart-bar"><i data-val="88"></i></div><span class="chart-pct">88%</span></div>
+          <div class="chart-row"><span class="chart-label">Churn Prediction</span><div class="chart-bar"><i data-val="92"></i></div><span class="chart-pct">92%</span></div>
+          <div class="chart-row"><span class="chart-label">Sentiment Engine</span><div class="chart-bar"><i data-val="85"></i></div><span class="chart-pct">85%</span></div>
+          <div class="chart-row"><span class="chart-label">Demand Forecast</span><div class="chart-bar"><i data-val="90"></i></div><span class="chart-pct">90%</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="focus" class="focus">
+  <div class="wrap">
+    <p class="focus-lead reveal">Every model I build runs the same loop. Four stages, one signal — and I work on all four.</p>
+    <div class="timeline reveal">
+      <div class="timeline-track"><div class="timeline-dot" id="timelineDot"></div></div>
+      <div class="timeline-stages">
+        <div class="tl-stage active" data-stage="0">
+          <span class="tl-name">Collect</span>
+          <p class="tl-desc">Raw data gets pulled — from CSVs, SQL tables, APIs, wherever it lives.</p>
+          <span class="tl-tag">SQL · APIs</span>
+        </div>
+        <div class="tl-stage" data-stage="1">
+          <span class="tl-name">Clean</span>
+          <p class="tl-desc">Code reshapes it, checks it, fixes what should be fixed.</p>
+          <span class="tl-tag">Pandas · NumPy</span>
+        </div>
+        <div class="tl-stage" data-stage="2">
+          <span class="tl-name">Model</span>
+          <p class="tl-desc">A pattern turns into a trained, tested model.</p>
+          <span class="tl-tag">Scikit-learn · Deep Learning</span>
+        </div>
+        <div class="tl-stage" data-stage="3">
+          <span class="tl-name">Deploy</span>
+          <p class="tl-desc">The result becomes a dashboard — something a person opens and uses.</p>
+          <span class="tl-tag">Power BI · Dashboards</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CATEGORY CARDS ============ -->
+<section class="categories">
+  <div class="wrap cat-grid">
+    <div class="cat-card reveal">
+      <span class="cat-num">02</span>
+      <h3>DATA & <em>pipelines</em></h3>
+      <p>Pulling data from messy, real sources — SQL databases, spreadsheets, APIs — and shaping it until it's trustworthy enough to model.</p>
+    </div>
+    <div class="cat-card reveal">
+      <span class="cat-num">03</span>
+      <h3>MODELS FOR <em>decisions</em></h3>
+      <p>Training classification, forecasting and NLP models, and being honest about where they're wrong, not just where they're right.</p>
+    </div>
+    <div class="cat-card reveal">
+      <span class="cat-num">04</span>
+      <h3>DASHBOARDS THAT <em>get used</em></h3>
+      <p>Turning model output into a Power BI dashboard someone can open Monday morning and actually act on.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TOOLS GRID ============ -->
+<section id="tools">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-num">05</span>
+      <span class="section-title">Stack</span>
+      <span class="section-line"></span>
+    </div>
+    <div class="tools-grid reveal">
+      <div class="tool-card"><span class="tool-icon">Py</span><h4>Python</h4><p>Pandas, NumPy, Scikit-learn — daily driver</p></div>
+      <div class="tool-card"><span class="tool-icon">DB</span><h4>SQL</h4><p>Querying and shaping relational data</p></div>
+      <div class="tool-card"><span class="tool-icon">BI</span><h4>Power BI</h4><p>Building dashboards non-technical teams use</p></div>
+      <div class="tool-card"><span class="tool-icon">ML</span><h4>Scikit-learn</h4><p>Classical ML — from baseline to tuned model</p></div>
+      <div class="tool-card"><span class="tool-icon">NN</span><h4>Deep Learning</h4><p>Neural nets for NLP & vision tasks</p></div>
+      <div class="tool-card"><span class="tool-icon">AI</span><h4>Generative AI</h4><p>Prompting, RAG, LLM-backed tools</p></div>
+      <div class="tool-card"><span class="tool-icon">Git</span><h4>Git & GitHub</h4><p>Version control — daily habit</p></div>
+      <div class="tool-card"><span class="tool-icon">JN</span><h4>Jupyter</h4><p>First tool I reach for on a new dataset</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKILL CLOUD ============ -->
+<section class="cloud-section">
+  <p class="cloud-caption reveal">move your cursor through them</p>
+  <div class="tag-cloud reveal">
+    <span class="cloud-tag" style="top:10%; left:18%;">Python</span>
+    <span class="cloud-tag" style="top:22%; left:62%;">SQL</span>
+    <span class="cloud-tag" style="top:8%; left:78%;">Power BI</span>
+    <span class="cloud-tag" style="top:42%; left:6%;">Pandas</span>
+    <span class="cloud-tag" style="top:52%; left:38%;">Scikit-learn</span>
+    <span class="cloud-tag" style="top:38%; left:82%;">NumPy</span>
+    <span class="cloud-tag" style="top:68%; left:16%;">Deep Learning</span>
+    <span class="cloud-tag" style="top:78%; left:56%;">Generative AI</span>
+    <span class="cloud-tag" style="top:62%; left:70%;">NLP</span>
+    <span class="cloud-tag" style="top:88%; left:30%;">Git</span>
+    <span class="cloud-tag" style="top:14%; left:42%;">Jupyter</span>
+    <span class="cloud-tag" style="top:80%; left:84%;">Excel</span>
+  </div>
+</section>
+<section id="projects">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-num">06</span>
+      <span class="section-title">Projects</span>
+      <span class="section-line"></span>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card reveal" data-tilt>
+        <span class="proj-index">01 / Recruitment</span>
+        <h3>AI Resume Screening System</h3>
+        <p>An NLP pipeline that parses resumes, extracts structured candidate features and ranks applicants against a job description.</p>
+        <div class="proj-stack"><span>Python</span><span>NLP</span><span>Scikit-learn</span><span>Pandas</span></div>
+      </div>
+      <div class="proj-card reveal" data-tilt>
+        <span class="proj-index">02 / Retention</span>
+        <h3>Customer Churn Prediction</h3>
+        <p>Classification model that flags customers likely to churn, paired with a dashboard for the retention team to act on.</p>
+        <div class="proj-stack"><span>Python</span><span>Machine Learning</span><span>Power BI</span></div>
+      </div>
+      <div class="proj-card reveal" data-tilt>
+        <span class="proj-index">03 / Forecasting</span>
+        <h3>Sales Demand Forecasting Dashboard</h3>
+        <p>Time-series forecasting model feeding an interactive Power BI dashboard for demand by region and product line.</p>
+        <div class="proj-stack"><span>SQL</span><span>Power BI</span><span>Time Series</span></div>
+      </div>
+      <div class="proj-card reveal" data-tilt>
+        <span class="proj-index">04 / NLP</span>
+        <h3>Sentiment Analysis Engine</h3>
+        <p>A bilingual (Arabic/English) sentiment classifier, benchmarking classical ML against a fine-tuned transformer.</p>
+        <div class="proj-stack"><span>Python</span><span>NLP</span><span>Deep Learning</span></div>
+      </div>
+      <div class="proj-card reveal" data-tilt>
+        <span class="proj-index">05 / Generative AI</span>
+        <h3>AI Study Assistant</h3>
+        <p>A RAG-based assistant that answers questions from course material, grounded in retrieved documents.</p>
+        <div class="proj-stack"><span>Generative AI</span><span>Python</span><span>Prompt Engineering</span></div>
+      </div>
+      <div class="proj-card reveal" data-tilt>
+        <span class="proj-index">06 / Analytics</span>
+        <h3>Exploratory Data Analysis Toolkit</h3>
+        <p>A reusable EDA + reporting pipeline that profiles any dataset and outputs a shareable insights dashboard.</p>
+        <div class="proj-stack"><span>Python</span><span>Pandas</span><span>Dashboarding</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RÉSUMÉ ============ -->
+<section id="resume" class="resume-section">
+  <div class="wrap-narrow">
+    <span class="section-num reveal" style="display:block; text-align:center; margin-bottom:10px;">07</span>
+    <h2 class="resume-title reveal">Résumé — the same thing, on <em>one page.</em></h2>
+    <p class="resume-sub reveal">A print-ready CV with everything on this site condensed — background, focus areas, tools, and contact details. PDF, A4, one page.</p>
+
+    <div class="resume-panel reveal">
+      <div class="resume-files">
+        <div class="resume-file active">
+          <span class="rf-dot"></span>
+          <span class="rf-name">Kareem-Osama-CV.pdf</span>
+          <span class="rf-meta">v1.0 · updated just now</span>
+        </div>
+        <div class="resume-file">
+          <span class="rf-dot"></span>
+          <span class="rf-name">Kareem-Osama-CV.pdf</span>
+          <span class="rf-meta">v0.9 · 5 minutes ago</span>
+        </div>
+        <div class="resume-file">
+          <span class="rf-dot"></span>
+          <span class="rf-name">Kareem-Osama-CV.pdf</span>
+          <span class="rf-meta">v0.8 · 46 minutes ago</span>
+        </div>
+      </div>
+      <a class="btn btn-primary resume-btn" href="assets/Kareem-Osama-CV.pdf" download>⬇ Download CV (PDF)</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT / CTA ============ -->
+<section id="contact">
+  <div class="contact-block reveal">
+    <span class="contact-eyebrow">CONTACT</span>
+    <h2>Building something with data,<br>or just want to <em>talk shop?</em></h2>
+    <p class="contact-caveat">CAREFULLY — every model I ship, I can explain, not just run.</p>
+    <div class="contact-methods">
+      <a class="btn btn-primary" href="mailto:kareemososok@gmail.com">✉ kareemososok@gmail.com</a>
+      <a class="btn btn-ghost" href="tel:+201205999903">📞 +20 120 599 9903</a>
+    </div>
+  </div>
+  <div class="footer-meta">
+    <span>KAREEM OSAMA ABOZAID · COMPUTER SCIENCE & AI</span>
+    <span>MACHINE INTELLIGENCE · 2026</span>
+  </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
