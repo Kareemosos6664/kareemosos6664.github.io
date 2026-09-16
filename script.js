@@ -33,6 +33,156 @@
   });
 })();
 
+/* ---------------- LIQUID WAVE BACKGROUND (blue shader) ---------------- */
+(function waveBackground(){
+  const canvas = document.getElementById('waveBg');
+  if(!canvas) return;
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if(!gl) return;
+
+  const vertexSrc = `
+    attribute vec2 aPosition;
+    void main() {
+        gl_Position = vec4(aPosition, 0.0, 1.0);
+    }
+  `;
+
+  const fragmentSrc = `
+    precision highp float;
+    uniform vec2 uResolution;
+    uniform float uTime;
+    uniform float uScroll;
+    uniform vec2 uMouse;
+
+    void main() {
+        vec2 uv = (gl_FragCoord.xy - 0.5 * uResolution.xy) / uResolution.y;
+        float aspect = uResolution.x / uResolution.y;
+
+        float time = uTime * 0.08;
+        float scroll = uScroll;
+
+        float angle1 = 0.6;
+        float angle2 = -0.7;
+        float angle3 = 1.2;
+
+        float freq1 = 2.4;
+        float freq2 = 3.2;
+        float freq3 = 4.0;
+
+        vec2 warpedUv = uv;
+        float scrollDeform = scroll * 5.0;
+
+        warpedUv.x += sin(uv.y * 2.5 + time * 0.2 + scrollDeform) * 0.35;
+        warpedUv.y += cos(uv.x * 2.5 - time * 0.15 - scrollDeform * 0.8) * 0.35;
+
+        warpedUv.x += sin(uv.y * 1.2 - time * 0.1 - scrollDeform * 1.5) * 0.25;
+        warpedUv.y += cos(uv.x * 1.2 + time * 0.18 + scrollDeform * 1.2) * 0.25;
+
+        vec2 scrollDrift = vec2(scroll * 0.04, -scroll * 0.02);
+        vec2 mouseShift = vec2(uMouse.x * aspect * 0.05, uMouse.y * 0.05);
+        warpedUv += scrollDrift + mouseShift;
+
+        vec2 dir1 = vec2(cos(angle1), sin(angle1));
+        vec2 dir2 = vec2(cos(angle2), sin(angle2));
+        vec2 dir3 = vec2(cos(angle3), sin(angle3));
+
+        float w1 = sin(dot(warpedUv, dir1) * freq1 + time * 1.0);
+        float w2 = cos(dot(warpedUv, dir2) * freq2 - time * 1.4 + w1 * 0.4);
+        float w3 = sin(dot(warpedUv, dir3) * freq3 + time * 1.8 + w2 * 0.5);
+
+        float waveField = w1 * 0.50 + w2 * 0.35 + w3 * 0.15;
+
+        float wideSheen = pow(max(0.0, 1.0 - abs(waveField - 0.1)), 2.5);
+        float crispSpecular = pow(max(0.0, 1.0 - abs(waveField - 0.15)), 8.0);
+        float crest = wideSheen * 0.5 + crispSpecular * 0.9;
+
+        vec3 colShadow = vec3(0.004, 0.007, 0.014);
+        vec3 colWave1  = vec3(0.024, 0.062, 0.150);
+        vec3 colWave2  = vec3(0.012, 0.034, 0.090);
+        vec3 colCrest  = vec3(0.28, 0.58, 0.95);
+
+        vec3 color = colShadow;
+        color = mix(color, colWave2, smoothstep(-0.6, 0.2, waveField));
+        color = mix(color, colWave1, smoothstep(0.0, 0.8, waveField));
+        color += colCrest * crest * 1.3;
+
+        float vignette = 1.0 - dot(uv, uv) * 0.12;
+        color *= vignette;
+
+        gl_FragColor = vec4(color, 1.0);
+    }
+  `;
+
+  function compile(type, src){
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    if(!gl.getShaderParameter(s, gl.COMPILE_STATUS)){
+      console.error(gl.getShaderInfoLog(s));
+      return null;
+    }
+    return s;
+  }
+
+  const vs = compile(gl.VERTEX_SHADER, vertexSrc);
+  const fs = compile(gl.FRAGMENT_SHADER, fragmentSrc);
+  if(!vs || !fs) return;
+
+  const program = gl.createProgram();
+  gl.attachShader(program, vs);
+  gl.attachShader(program, fs);
+  gl.linkProgram(program);
+  if(!gl.getProgramParameter(program, gl.LINK_STATUS)){
+    console.error(gl.getProgramInfoLog(program));
+    return;
+  }
+  gl.useProgram(program);
+
+  const posBuffer = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, posBuffer);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 3,-1, -1,3]), gl.STATIC_DRAW);
+  const aPosition = gl.getAttribLocation(program, 'aPosition');
+  gl.enableVertexAttribArray(aPosition);
+  gl.vertexAttribPointer(aPosition, 2, gl.FLOAT, false, 0, 0);
+
+  const uResolution = gl.getUniformLocation(program, 'uResolution');
+  const uTime = gl.getUniformLocation(program, 'uTime');
+  const uScroll = gl.getUniformLocation(program, 'uScroll');
+  const uMouse = gl.getUniformLocation(program, 'uMouse');
+
+  let mouseX = 0, mouseY = 0;
+  window.addEventListener('mousemove', (e)=>{
+    mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+    mouseY = (e.clientY / window.innerHeight) * 2 - 1;
+  });
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function resize(){
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    gl.viewport(0, 0, canvas.width, canvas.height);
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  const start = performance.now();
+  function frame(now){
+    const t = (now - start) / 1000;
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const scroll = maxScroll > 0 ? window.scrollY / maxScroll : 0;
+
+    gl.uniform2f(uResolution, canvas.width, canvas.height);
+    gl.uniform1f(uTime, t);
+    gl.uniform1f(uScroll, scroll);
+    gl.uniform2f(uMouse, mouseX, -mouseY);
+
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
+    if(!reduceMotion) requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+
 /* ---------------- PARTICLE NETWORK BACKGROUND ---------------- */
 (function particleNet(){
   const canvas = document.getElementById('net');

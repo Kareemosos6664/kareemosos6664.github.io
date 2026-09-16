@@ -45,6 +45,7 @@ em{ font-style:normal; color: var(--cyan); }
 .cursor-glow{ position:fixed; top:0; left:0; width:340px; height:340px; border-radius:50%; background: radial-gradient(circle, rgba(61,123,255,0.10), transparent 70%); pointer-events:none; transform: translate(-50%,-50%); z-index:1; }
 @media (hover:none){ .cursor-glow{ display:none; } }
 #net{ position:fixed; inset:0; z-index:0; opacity:0.5; }
+#waveBg{ position:fixed; inset:0; z-index:-1; }
 
 /* ---------- REVEAL ---------- */
 .reveal{ opacity:0; transform: translateY(28px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
